@@ -1,4 +1,4 @@
-este indx <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -346,31 +346,6 @@ este indx <!DOCTYPE html>
             color: var(--primary-color);
             letter-spacing: -0.3px;
             flex: 1;
-            min-width: 140px;
-        }
-
-        .btn-card-whatsapp {
-            background: #25d366;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            padding: 8px 12px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: all 0.25s ease;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.25);
-            flex-shrink: 0;
-        }
-
-        .btn-card-whatsapp:hover {
-            background: #20ba59;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(37, 211, 102, 0.4);
-            color: white;
         }
 
         /* ================= LIGHTBOX / MODAL ================= */
@@ -497,28 +472,6 @@ este indx <!DOCTYPE html>
             font-size: 1.6rem;
             font-weight: 800;
             color: var(--primary-color);
-        }
-
-        .modal-whatsapp-btn {
-            background: #25d366;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
-            transition: all 0.25s ease;
-        }
-
-        .modal-whatsapp-btn:hover {
-            background: #20ba59;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 22px rgba(37, 211, 102, 0.5);
-            color: white;
         }
 
         /* ================= BOTON SUBIR ================= */
@@ -746,7 +699,6 @@ este indx <!DOCTYPE html>
                 <p id="modalDesc" class="modal-desc"></p>
                 <div class="modal-footer">
                     <span id="modalPrice" class="modal-price"></span>
-                    <a id="modalWhatsApp" href="#" target="_blank" class="modal-whatsapp-btn">📲 Pedir por WhatsApp</a>
                 </div>
             </div>
         </div>
@@ -773,7 +725,6 @@ este indx <!DOCTYPE html>
         document.addEventListener('DOMContentLoaded', () => {
             const USER = 'electrogenesis10-ops';
             const REPO = 'carta';
-            const WA_PHONE = '5491123140119';
 
             const categoryContainer = document.getElementById('category-buttons');
             const productList = document.getElementById('product-list');
@@ -836,9 +787,6 @@ este indx <!DOCTYPE html>
                     
                     let rawPrice = (p.precio || '0').toString().replace(/\t+/g, ' ').trim();
                     const priceFormatted = rawPrice.includes('$') ? rawPrice : '$' + rawPrice;
-                    
-                    const waText = encodeURIComponent(`Hola Génesis Electrodomésticos, quiero consultar por: ${p.nombre} (${priceFormatted})`);
-                    const waLink = `https://wa.me/${WA_PHONE}?text=${waText}`;
 
                     return `
                     <div class="item">
@@ -854,7 +802,6 @@ este indx <!DOCTYPE html>
                             </div>
                             <div class="item-footer">
                                 <span class="price">${priceFormatted}</span>
-                                <a href="${waLink}" target="_blank" class="btn-card-whatsapp" title="Consultar por WhatsApp">📲 Consultar</a>
                             </div>
                         </div>
                     </div>`;
@@ -885,7 +832,6 @@ este indx <!DOCTYPE html>
                 const modalTitle = document.getElementById('modalTitle');
                 const modalDesc = document.getElementById('modalDesc');
                 const modalPrice = document.getElementById('modalPrice');
-                const modalWA = document.getElementById('modalWhatsApp');
 
                 modalImg.src = getImgUrl(p.imagen);
                 modalImg.onerror = function() { this.src = PLACEHOLDER_SVG; };
@@ -895,9 +841,6 @@ este indx <!DOCTYPE html>
                 let rawPrice = (p.precio || '0').toString().replace(/\t+/g, ' ').trim();
                 const priceFormatted = rawPrice.includes('$') ? rawPrice : '$' + rawPrice;
                 modalPrice.innerText = priceFormatted;
-
-                const waText = encodeURIComponent(`Hola Génesis Electrodomésticos, me interesa el producto: ${p.nombre} - ${priceFormatted}`);
-                modalWA.href = `https://wa.me/${WA_PHONE}?text=${waText}`;
 
                 modal.classList.add('active');
                 document.body.style.overflow = 'hidden';
@@ -982,4 +925,4 @@ este indx <!DOCTYPE html>
     </script>
 </body>
 
-</html>....saclale la solo lo del whatsaap lo otro queda igual
+</html>
